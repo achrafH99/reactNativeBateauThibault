@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import {Button} from 'teaset';
 import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
 
 export default function Home(props) {
@@ -9,7 +10,7 @@ export default function Home(props) {
         <Text>hello!</Text>
       </View>
       <View style={styles.head2}>
-        <TouchableOpacity style={styles.button} onPress={()=>props.navigation.navigate('Products')}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>props.navigation.navigate('Detail')}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity style={styles.buttonLT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
           <TouchableOpacity style={styles.buttonRT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>

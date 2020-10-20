@@ -5,26 +5,44 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer} from "@react-navigation/native";
 import Detail from './components/Detail.js';
+import { Provider } from 'react-redux';
+import store from "./store/configureStore";
 
 
 const Stack = createStackNavigator();
 
+const MyTheme = {
+  dark: false,
+  colors:{
+    primary: 'rgb(255, 45, 85)',
+    background: '#09AFAD',
+    card: 'rgb(255, 255, 255)',
+    text: 'rgb(28, 28, 30)',
+    border: 'rgb(199, 199, 204)',
+    notification: 'rgb(255, 69, 58)',
+  }
+};
+
 export default function App() {
   return (
-     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home}/>
-        <Stack.Screen name="Detail" component={Detail}/>
-      </Stack.Navigator>
-     </NavigationContainer>
+    <Provider store={store}>
+      
+      <NavigationContainer theme={MyTheme}>
+        <Stack.Navigator  initialRouteName="Home" style={styles.container}>
+          <Stack.Screen name="Home" component={Home}/>
+          <Stack.Screen name="Detail" component={Detail}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
 });

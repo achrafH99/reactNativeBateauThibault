@@ -1,24 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {Button} from 'teaset';
-import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
-import { Card,SimpleCard } from "@paraboly/react-native-card";
+import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
 import { Component } from 'react';
-import {Ionicons,Fontisto} from "@expo/vector-icons";
+import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
+import { Button } from 'react-native-elements';
+import {connect} from "react-redux";
+import images from "../services/images";
 
 
-const buttonsInfos = [
-  {
-
-  }
-];
+ImageBackground
 
 
-export default class Home extends Component{
+class HomePage extends Component{
 
   constructor(props){
     super(props);
   }
+
 
   navigate(url){
     this.props.navigation.navigate(url);
@@ -27,23 +24,42 @@ export default class Home extends Component{
   render(){
     return (
       <View style={styles.container}>
-          <View style={styles.part}>
+        <ImageBackground source={images["background"]} style={styles.image}>
+         <View style={styles.part}>
 
           </View>
           <View style={styles.part}>
-            <Card iconComponent={<Ionicons name="md-restaurant" size={32} color="black" />} title="Details" onPress={() => this.navigate("Detail")}/>
+             { this.props.buttonLinks &&
+               (this.props.buttonLinks.map(value => 
+                (<TouchableOpacity
+                style={value.style ? value.style : styles.button}
+                onPress={() => this.navigate(value.componentPath)}>
+                  <AntDesign name="tagso" size={24} color="#2096ff" />
+                  <Text style={styles.buttonText}>{value.title}</Text>
+                </TouchableOpacity>)))
+             }
           </View>
+        </ImageBackground>
       </View>
     );
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {buttonLinks : state.buttonLinks.home}
+}
+
+const Home = connect(mapStateToProps)(HomePage);
+
+export default Home;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#06ABA6',
+    //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'space-around',
+    
 
   },
   head: {
@@ -61,31 +77,47 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
   button:{
-    position: 'absolute',
-    top:  5,
-    backgroundColor: "black",
-    opacity:0.4,
-    width:"98%",
-    height:"50%"
-  },
-  buttonLT:{
-    bottom: 90,
-    backgroundColor: "black",
-    opacity:0.4,
     width:"48%",
-    height:"450%",
-    right:4
-  },
-  buttonRT:{
-    bottom: 90,
     backgroundColor: "black",
-    opacity:0.4,
-    width:"48%",
-    height:"450%",
-    left:4
+    // paddingHorizontal: 12,
+    paddingVertical: 30,
+    marginVertical:10,
+    // marginHorizontal: 5
+    // borderRadius: 10,
+    elevation: 8,
+    // textAlign: "center",
+    opacity : 0.6,
+    // paddingVertical: 21,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    
+  },
+  buttonText:{
+    fontSize: 13,
+    color: "white",
+    fontWeight: "bold",
+    // alignSelf: "center",
+    textTransform: "uppercase",
+    textAlign: "center",
+    // marginHorizontal: 10,
+    
+
+    overflow: "visible"
   },
   part: {
-    height: "50%"
+    height: "50%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
   }
 });

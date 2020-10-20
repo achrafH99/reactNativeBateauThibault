@@ -2,35 +2,49 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {Button} from 'teaset';
 import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
+import { Card,SimpleCard } from "@paraboly/react-native-card";
+import { Component } from 'react';
+import {Ionicons,Fontisto} from "@expo/vector-icons";
 
-export default function Home(props) {
-  return (
-    <View style={styles.container}>
-      <View style={styles.head}>
-        <Text>hello!</Text>
-      </View>
-      <View style={styles.head2}>
-        <TouchableOpacity style={styles.button} onPress={()=>props.navigation.navigate('Detail')}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.buttonLT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.buttonRT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
 
-        </View>
-        <View style={{flexDirection: 'row',top:75}}>
-          <TouchableOpacity style={styles.buttonLT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.buttonRT}><Text style={{color:"white"}}>Produits et promotions</Text></TouchableOpacity>
-        </View>
+const buttonsInfos = [
+  {
+
+  }
+];
+
+
+export default class Home extends Component{
+
+  constructor(props){
+    super(props);
+  }
+
+  navigate(url){
+    this.props.navigation.navigate(url);
+  }
+
+  render(){
+    return (
+      <View style={styles.container}>
+          <View style={styles.part}>
+
+          </View>
+          <View style={styles.part}>
+            <Card iconComponent={<Ionicons name="md-restaurant" size={32} color="black" />} title="Details" onPress={() => this.navigate("Detail")}/>
+          </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'space-around',
+
   },
   head: {
     flex: 1,
@@ -70,5 +84,8 @@ const styles = StyleSheet.create({
     width:"48%",
     height:"450%",
     left:4
+  },
+  part: {
+    height: "50%"
   }
 });

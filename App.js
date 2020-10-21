@@ -36,6 +36,7 @@ export default function App() {
             <Stack.Screen name="Detail" component={Detail}/>
             <Stack.Screen name="ProductList" component={ProductList}/>
             <Stack.Screen name="CategoryList" component={CategoryList}/>
+            <Stack.Screen name="Bateaux" component={Bateaux}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

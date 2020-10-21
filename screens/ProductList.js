@@ -1,7 +1,7 @@
 import React from 'react'
-import {  View, StyleSheet, Alert } from 'react-native'
+import {  View, StyleSheet, Alert,Icon } from 'react-native'
 import { Card } from "@paraboly/react-native-card";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons,Ionicons,Fontisto, Foundation, AntDesign } from '@expo/vector-icons';
 import List from '../components/List';
 import categorie from '../constants/categorie'
 import products from '../constants/data'
@@ -21,11 +21,13 @@ export default function ProductList({ navigation }) {
                 <View key={product.name+" "+i} style={styles.product}>
 
                     <PricingCard
-                    containerStyle={{width:350}}
+                    containerStyle={{width:350,display:"flex",justifyContent:"center"}}
                     color="#4f9deb"
                     title={product.name}
                     price={product.price + "€"}
-                    button={{ title: 'GET STARTED', icon: 'flight-takeoff' }} />
+                    info={[ product.comments,"Unité : "+product.unit ,product.availability ? "Disponible" : "Indisponible" ]}
+                    infoStyle={{color:"black"}}
+                    button={{ title: '', icon: <MaterialIcons name="add-shopping-cart" size={28} color="white" />  }}  />
                 </View>
 
             )

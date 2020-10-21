@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View,StyleSheet,ImageBackground} from 'react-native';
-import images from "../services/images";
+import { Text, View,StyleSheet,ScrollView,ImageBackground } from 'react-native';
+import images from '../services/images'
 
 export default class List extends Component {
     constructor(props){
@@ -8,16 +8,16 @@ export default class List extends Component {
     }
     render() {
         return (
-            <ImageBackground source={images["background"]} style={styles.image}>
             <View style={styles.list}>
+            <ImageBackground source={images["background"]} style={styles.image}>
                 <View style={styles.title}>
                     <Text style={styles.titleTxt}>Choisissez vos produits</Text>
                 </View>
-                <View style={styles.elements}>
+                <ScrollView contentContainerStyle={styles.elements}>
                     {this.props.list}
-                </View>
-            </View>
+                </ScrollView>
             </ImageBackground>
+            </View>
         )
     }
 }
@@ -40,9 +40,9 @@ const styles= StyleSheet.create({
         alignItems: "center",
         padding: 5,
     },
-    image: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
-  },
+    image:{
+        flex:1,
+        resizeMode:"cover",
+        justifyContent:"center"
+    }
 })

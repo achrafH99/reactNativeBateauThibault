@@ -4,10 +4,10 @@ import { StyleSheet, View } from 'react-native';
 import { Badge } from 'react-native-elements';
 
 const CartComponent = ({
-    products
+    products,navigation
 }) => (
     <View style={styles.container}>
-        <AntDesign name="shoppingcart" size={32} color="white" />
+        <AntDesign name="shoppingcart" size={32} color="white" onPress={() => {navigation.navigate('Cart')}} />
         <Badge status="error" value={products.length} />
     </View>
 );

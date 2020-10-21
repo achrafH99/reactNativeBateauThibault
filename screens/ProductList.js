@@ -40,7 +40,7 @@ export class  ProductList extends Component {
     }
 
     addToCart(product){
-        this.props.addProduct({quantite : 1,product : product});
+        this.props.addProduct({quantity : 1,product : product});
         
     }
 
@@ -49,22 +49,21 @@ export class  ProductList extends Component {
     }
 
     toggleCart(element) {
-        const arr = this.props.cartProducts.filter(value => value.product.id == element.product.id);
-        if(arr.length > 0){
-            this.removeFromCart(element);
+        
+        const arr = this.props.cartProducts.filter(value => value.product.id == element.id);
+        if(arr && arr.length > 0){
+            this.removeFromCart(arr[0]);
         } else {
             this.addToCart(element);
         }
     }
 
     render(){
-        console.log(this.props.cartProducts);
-        console.log(this.props.route.params.idCategorie)
         return (
             <SafeAreaView>
                 <Header
                     containerStyle = {{backgroundColor: "bue",opacity: 0.7,height : 70, paddingBottom:25}}
-                    rightComponent={<CartComponent products={this.props.cartProducts}/>}
+                    rightComponent={<CartComponent products={this.props.cartProducts} navigation={this.props.navigation}/>}
                 />
                 <List navigation={this.props.navigation} list={this.state.products.map( (product,i) => {
                     return (

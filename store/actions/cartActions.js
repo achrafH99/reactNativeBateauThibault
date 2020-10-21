@@ -15,3 +15,21 @@ export const removeProduct = (data) => {
         });
     };
 };
+
+export const incrementQuantity = (data) => {
+    return dispatch => {
+        dispatch({
+            type : "INCREMENT_QUANTITY",
+            value: data
+        })
+    }
+}
+
+export const decrementQuantity = (data) => {
+    return dispatch => {
+        dispatch({
+            type : "DECREMENT_QUANTITY",
+            value: data
+        })
+    }
+}

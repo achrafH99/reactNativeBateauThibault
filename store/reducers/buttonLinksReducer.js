@@ -36,12 +36,12 @@ let INITIAL_STATE = {
         },
         {
           title: "Restaurants",
-          componentPath: 'Detail',
+          componentPath: 'Restaurants',
           icon: <Ionicons name="md-restaurant" size={28} color="white" />
         },
         {
           title: "Recettes",
-          componentPath: 'Detail',
+          componentPath: 'Recettes',
           icon:<Entypo name="menu" size={28} color="white" />
         },
         {
@@ -60,18 +60,76 @@ let INITIAL_STATE = {
       {
         title: "Saphir",
         componentPath: 'Detail',
-        icon: <Ionicons name="md-boat" size={28} color="white" />
+        image:require('../../assets/images/saphir.png')
       },
       {
         title: "Gast Micher",
         componentPath: 'Detail',
-        icon: <Ionicons name="md-boat" size={28} color="white" />
+        image:require('../../assets/images/gastMicher.png')
       },
       {
         title: "Aquilon",
         componentPath: 'Detail',
-        image: require('../../assets/images/ancre.png'),
+        image: require('../../assets/images/aquilon.png'),
       }
+    ],
+    recettes : [
+      {
+        title: "Homard",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/homardRecette.png')
+
+      },{
+        title: "St Jacques",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/saintJacques.png')
+
+      },{
+        title: "Bar",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Tourteau",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/tourteau.png')
+
+      }
+
+    ],
+    restaurants :[
+      {
+        title: "Bistrot des Gascons",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Les fous de l'île",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Bistrot Landais",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Villa 9-Trois",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Bistrot du Sommelier",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },{
+        title: "Devenez partenaire!",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/barRecette.png')
+
+      },
+
     ]
 };
 

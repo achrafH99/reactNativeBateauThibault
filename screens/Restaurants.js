@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import images from "../services/images";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-class HomePage extends Component{
+class RestaurantsPage extends Component{
   constructor(props){
     super(props);
   }
@@ -38,10 +38,10 @@ class HomePage extends Component{
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {buttonLinks : state.buttonLinks.home}
+  return {buttonLinks : state.buttonLinks.restaurants}
 }
-const Home = connect(mapStateToProps)(HomePage);
-export default Home;
+const Restaurants = connect(mapStateToProps)(RestaurantsPage);
+export default Restaurants;
 
 const styles = StyleSheet.create({
   container: {
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   },
   button:{
     width:"48%",
-    backgroundColor: "#194d82",
-    borderColor:"#023d52",
+    backgroundColor: "#1692BE",
+    borderColor:"#0D6B8D",
     borderWidth: 2,
     // paddingHorizontal: 12,
     paddingVertical: 30,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 8,
     // textAlign: "center",
-     opacity : 0.9,
+    opacity : 0.8,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",

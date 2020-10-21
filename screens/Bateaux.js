@@ -1,14 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground,Image} from 'react-native';
 import { Component } from 'react';
 import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
 import { Button } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 
-
-
-class HomePage extends Component{
+class BateauxPage extends Component{
 
   constructor(props){
     super(props);
@@ -32,7 +30,10 @@ class HomePage extends Component{
                 (<TouchableOpacity
                 style={value.style ? value.style : styles.button}
                 onPress={() => this.navigate(value.componentPath)}>
-                {value.icon}
+                <Image
+                style={styles.tinyLogo}
+                source={value.image}
+              />
                   <Text style={styles.buttonText}>{value.title}</Text>
                 </TouchableOpacity>)))
              }
@@ -44,12 +45,12 @@ class HomePage extends Component{
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {buttonLinks : state.buttonLinks.home}
+  return {buttonLinks : state.buttonLinks.bateaux}
 }
 
-const Home = connect(mapStateToProps)(HomePage);
+const Bateaux = connect(mapStateToProps)(BateauxPage);
 
-export default Home;
+export default Bateaux;
 
 
 const styles = StyleSheet.create({
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 8,
     // textAlign: "center",
-    opacity : 0.8,
+    opacity : 0.9,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
@@ -121,5 +122,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-  }
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+    borderRadius:25
+  },
 });

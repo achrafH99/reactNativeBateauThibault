@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from "./store/configureStore";
 import ProductList from './screens/ProductList';
 import CategoryList from './screens/CategoryList';
+import Bateaux from './screens/Bateaux'
 
 const Stack = createStackNavigator();
 
@@ -27,13 +28,14 @@ const MyTheme = {
 export default function App() {
   return (
     <Provider store={store}>
-      
+
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator  initialRouteName="Home" style={styles.container}>
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Detail" component={Detail}/>
           <Stack.Screen name="ProductList" component={ProductList}/>
           <Stack.Screen name="CategoryList" component={CategoryList}/>
+          <Stack.Screen name="Bateaux" component={Bateaux}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

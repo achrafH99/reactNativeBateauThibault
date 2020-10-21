@@ -30,7 +30,9 @@ export class  ProductList extends Component {
     componentDidMount(){
         getRessources('products')
         .then((value) => {
-            this.setState({products : value.data})
+            this.setState({products : value.data.filter(val => {
+                return val.category==this.props.route.params.idCategorie
+            })})
         })
         .catch(err => {
             console.log(err);
@@ -57,6 +59,7 @@ export class  ProductList extends Component {
 
     render(){
         console.log(this.props.cartProducts);
+        console.log(this.props.route.params.idCategorie)
         return (
             <SafeAreaView>
                 <Header

@@ -8,8 +8,8 @@ import { SafeAreaView } from 'react-native';
 export default function CategoryList({ navigation }) {
     return (
         <SafeAreaView>
-                    <List navigation={navigation} list={categorie.map(({ name, screen }) => {
-            return <Category key={name} navigation={navigation} name={name} image={Img.poulpe.uri} screen={screen} />
+                    <List navigation={navigation} list={categorie.map(({ name, screen, id }) => {
+            return <Category key={name} navigation={navigation} name={name} image={Img.poulpe.uri} screen={screen} id={id} />
         })}/>
         </SafeAreaView>
     )

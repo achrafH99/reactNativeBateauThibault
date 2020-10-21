@@ -1,11 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 
-export default function Category({ name ,navigation, screen, icon, image }) {
+export default function Category({ name ,navigation, screen, icon, image, id }) {
     return (
         <TouchableOpacity style={styles.category}
             onPress={ () => {
-                    navigation.navigate(screen)
+                    navigation.navigate("ProductList", {
+                        idCategorie: id
+                    })
                 }
             }>
             <View style={styles.item}>

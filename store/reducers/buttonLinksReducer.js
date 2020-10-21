@@ -6,7 +6,7 @@ let INITIAL_STATE = {
     home : [
         {
           title: "Produits et Promotions",
-          componentPath: 'ProductList',
+          componentPath: 'CategoryList',
           style:{
             width:"98%",
             // paddingHorizontal: 4,

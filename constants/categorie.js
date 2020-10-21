@@ -3,19 +3,23 @@ import Img from './image'
 const categorie =[
     {
         name: "Poissons",
-        screen: "Detail",
+        screen: "ProductList",
+        id: '0'
     },
     {
         name: "Coquillages",
-        screen: "Detail",
+        screen: "ProductList",
+        id: '1'
     },
     {
         name: "Crustaces",
-        screen: "Detail",
+        screen: "ProductList",
+        id: '2'
     },
     {
         name: "Promotions",
-        screen: "Detail",
+        screen: "ProductList",
+        id: '3'
     }
 ]
 

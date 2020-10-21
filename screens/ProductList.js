@@ -45,7 +45,7 @@ export class  ProductList extends Component {
     }
 
     addToCart(product){
-        this.props.addProduct(product);
+        this.props.addProduct({quantite : 1,product : product});
         
     }
 
@@ -53,12 +53,12 @@ export class  ProductList extends Component {
         this.props.removeProduct(product);
     }
 
-    toggleCart(product) {
-        const arr = this.props.cartProducts.filter(value => value.id == product.id);
+    toggleCart(element) {
+        const arr = this.props.cartProducts.filter(value => value.product.id == element.product.id);
         if(arr.length > 0){
-            this.removeFromCart(product);
+            this.removeFromCart(element);
         } else {
-            this.addToCart(product);
+            this.addToCart(element);
         }
     }
 

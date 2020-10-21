@@ -7,7 +7,7 @@ let cartReducer = (state = INITIAL_STATE, action) => {
         case "ADD_PRODUCT":
             return {...state, products: [...state.products, action.value]};
         case "REMOVE_PRODUCT":
-            return {...state, products: state.products.filter(value=>value.name!=action.value.name)};
+            return {...state, products: state.products.filter(value=>value.id!=action.value.id)};
         default:
             return state;
     }

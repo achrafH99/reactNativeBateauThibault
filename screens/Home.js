@@ -1,24 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
 import { Component } from 'react';
-import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
 import { Button } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 
-
-
 class HomePage extends Component{
-
   constructor(props){
     super(props);
   }
-
-
   navigate(url){
     this.props.navigation.navigate(url);
   }
-
   render(){
     return (
       <View style={styles.container}>
@@ -46,11 +39,8 @@ class HomePage extends Component{
 const mapStateToProps = (state, ownProps) => {
   return {buttonLinks : state.buttonLinks.home}
 }
-
 const Home = connect(mapStateToProps)(HomePage);
-
 export default Home;
-
 
 const styles = StyleSheet.create({
   container: {
@@ -58,8 +48,6 @@ const styles = StyleSheet.create({
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'space-around',
-
-
   },
   head: {
     flex: 1,
@@ -108,8 +96,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     textAlign: "center",
     // marginHorizontal: 10,
-
-
     overflow: "visible"
   },
   part: {

@@ -7,7 +7,8 @@ import {NavigationContainer} from "@react-navigation/native";
 import Detail from './components/Detail.js';
 import { Provider } from 'react-redux';
 import store from "./store/configureStore";
-
+import ProductList from './screens/ProductList';
+import CategoryList from './screens/CategoryList';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,8 @@ export default function App() {
         <Stack.Navigator  initialRouteName="Home" style={styles.container}>
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Detail" component={Detail}/>
+          <Stack.Screen name="ProductList" component={ProductList}/>
+          <Stack.Screen name="CategoryList" component={CategoryList}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -30,9 +30,14 @@ export class  ProductList extends Component {
     componentDidMount(){
         getRessources('products')
         .then((value) => {
-            this.setState({products : value.data.filter(val => {
-                return val.category==this.props.route.params.idCategorie
-            })})
+            this.setState({products : this.props.route.params.idCategorie == 3? 
+                value.data.filter(val => {
+                    return val.sale==true
+                }):
+                value.data.filter(val => {
+                    return val.category==this.props.route.params.idCategorie
+                })
+            })
         })
         .catch(err => {
             console.log(err);

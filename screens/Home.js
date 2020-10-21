@@ -7,8 +7,6 @@ import {connect} from "react-redux";
 import images from "../services/images";
 
 
-ImageBackground
-
 
 class HomePage extends Component{
 

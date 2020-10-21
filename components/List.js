@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View,StyleSheet } from 'react-native';
+import { Text, View,StyleSheet,ImageBackground} from 'react-native';
+import images from "../services/images";
 
 export default class List extends Component {
     constructor(props){
@@ -7,6 +8,7 @@ export default class List extends Component {
     }
     render() {
         return (
+            <ImageBackground source={images["background"]} style={styles.image}>
             <View style={styles.list}>
                 <View style={styles.title}>
                     <Text style={styles.titleTxt}>Choisissez vos produits</Text>
@@ -15,13 +17,13 @@ export default class List extends Component {
                     {this.props.list}
                 </View>
             </View>
+            </ImageBackground>
         )
     }
 }
 
 const styles= StyleSheet.create({
     list:{
-        backgroundColor: "#06ABA6",
         width:"100%",
         height: "100%",
         overflow: "scroll"
@@ -37,5 +39,10 @@ const styles= StyleSheet.create({
     elements: {
         alignItems: "center",
         padding: 5,
-    }
+    },
+    image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
 })

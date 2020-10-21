@@ -30,11 +30,11 @@ class HomePage extends Component{
           </View>
           <View style={styles.part}>
              { this.props.buttonLinks &&
-               (this.props.buttonLinks.map(value => 
+               (this.props.buttonLinks.map(value =>
                 (<TouchableOpacity
                 style={value.style ? value.style : styles.button}
                 onPress={() => this.navigate(value.componentPath)}>
-                  <AntDesign name="tagso" size={24} color="#2096ff" />
+                {value.icon}
                   <Text style={styles.buttonText}>{value.title}</Text>
                 </TouchableOpacity>)))
              }
@@ -53,13 +53,14 @@ const Home = connect(mapStateToProps)(HomePage);
 
 export default Home;
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'space-around',
-    
+
 
   },
   head: {
@@ -84,31 +85,32 @@ const styles = StyleSheet.create({
   },
   button:{
     width:"48%",
-    backgroundColor: "black",
+    backgroundColor: "#0100A7",
     // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
     // marginHorizontal: 5
-    // borderRadius: 10,
+    borderRadius: 15,
     elevation: 8,
     // textAlign: "center",
-    opacity : 0.6,
+    opacity : 0.8,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    
+    justifyContent: "space-around",
+    paddingHorizontal:5
+
   },
   buttonText:{
-    fontSize: 13,
+    fontSize: 18,
     color: "white",
     fontWeight: "bold",
     // alignSelf: "center",
     textTransform: "uppercase",
     textAlign: "center",
     // marginHorizontal: 10,
-    
+
 
     overflow: "visible"
   },

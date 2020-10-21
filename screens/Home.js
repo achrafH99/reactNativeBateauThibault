@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { Button } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 class HomePage extends Component{
   constructor(props){
@@ -14,7 +15,7 @@ class HomePage extends Component{
   }
   render(){
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ImageBackground source={images["background"]} style={styles.image}>
          <View style={styles.part}>
 
@@ -31,7 +32,7 @@ class HomePage extends Component{
              }
           </View>
         </ImageBackground>
-      </View>
+      </SafeAreaView>
     );
   }
 }

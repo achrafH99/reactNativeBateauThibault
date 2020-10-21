@@ -1,21 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground,Image} from 'react-native';
 import { Component } from 'react';
+import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
 import { Button } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-class HomePage extends Component{
+class RecettesPage extends Component{
+
   constructor(props){
     super(props);
   }
+
+
   navigate(url){
     this.props.navigation.navigate(url);
   }
+
   render(){
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <ImageBackground source={images["background"]} style={styles.image}>
          <View style={styles.part}>
 
@@ -26,22 +30,28 @@ class HomePage extends Component{
                 (<TouchableOpacity
                 style={value.style ? value.style : styles.button}
                 onPress={() => this.navigate(value.componentPath)}>
-                {value.icon}
+                <Image
+                style={styles.tinyLogo}
+                source={value.image}
+              />
                   <Text style={styles.buttonText}>{value.title}</Text>
                 </TouchableOpacity>)))
              }
           </View>
         </ImageBackground>
-      </SafeAreaView>
+      </View>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {buttonLinks : state.buttonLinks.home}
+  return {buttonLinks : state.buttonLinks.recettes}
 }
-const Home = connect(mapStateToProps)(HomePage);
-export default Home;
+
+const Recettes = connect(mapStateToProps)(RecettesPage);
+
+export default Recettes;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -49,6 +59,8 @@ const styles = StyleSheet.create({
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'space-around',
+
+
   },
   head: {
     flex: 1,
@@ -72,8 +84,8 @@ const styles = StyleSheet.create({
   },
   button:{
     width:"48%",
-    backgroundColor: "#194d82",
-    borderColor:"#023d52",
+    backgroundColor: "#1692BE",
+    borderColor:"#0D6B8D",
     borderWidth: 2,
     // paddingHorizontal: 12,
     paddingVertical: 30,
@@ -82,7 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 8,
     // textAlign: "center",
-     opacity : 0.9,
+    opacity : 0.9,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
@@ -99,6 +111,8 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     textAlign: "center",
     // marginHorizontal: 10,
+
+
     overflow: "visible"
   },
   part: {
@@ -108,5 +122,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-  }
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+    borderRadius:25
+  },
 });

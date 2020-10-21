@@ -10,7 +10,9 @@ import store from "./store/configureStore";
 import ProductList from './screens/ProductList';
 import CategoryList from './screens/CategoryList';
 import  {SafeAreaProvider} from 'react-native-safe-area-context';
-import Bateaux from './screens/Bateaux'
+import Bateaux from './screens/Bateaux';
+import Recettes from './screens/Recettes.js'
+import Restaurants from './screens/Restaurants.js'
 
 const Stack = createStackNavigator();
 
@@ -37,6 +39,9 @@ export default function App() {
             <Stack.Screen name="ProductList" component={ProductList}/>
             <Stack.Screen name="CategoryList" component={CategoryList}/>
             <Stack.Screen name="Bateaux" component={Bateaux}/>
+            <Stack.Screen name="Recettes" component={Recettes}/>
+            <Stack.Screen name="Restaurants" component={Restaurants}/>
+
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

@@ -10,6 +10,7 @@ import store from "./store/configureStore";
 import ProductList from './screens/ProductList';
 import CategoryList from './screens/CategoryList';
 import  {SafeAreaProvider} from 'react-native-safe-area-context';
+import Bateaux from './screens/Bateaux'
 
 const Stack = createStackNavigator();
 

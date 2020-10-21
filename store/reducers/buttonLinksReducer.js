@@ -1,5 +1,6 @@
 import {Ionicons,Fontisto, Foundation, AntDesign,Entypo} from "@expo/vector-icons";
 import React from 'react';
+import {Image} from 'react-native'
 
 let INITIAL_STATE = {
     home : [
@@ -10,7 +11,9 @@ let INITIAL_STATE = {
             width:"98%",
             // paddingHorizontal: 4,
             paddingVertical: 21,
-            backgroundColor: "#0100A7",
+            backgroundColor: "#1692BE",
+            borderColor:"#0D6B8D",
+            borderWidth: 2,
             borderRadius: 15,
             elevation: 8,
              opacity : 0.8,
@@ -28,7 +31,7 @@ let INITIAL_STATE = {
         },
         {
           title: "Bateaux",
-          componentPath: 'Detail',
+          componentPath: 'Bateaux',
           icon: <Ionicons name="md-boat" size={28} color="white" />
         },
         {
@@ -46,8 +49,32 @@ let INITIAL_STATE = {
           componentPath: 'Detail',
           icon:<Ionicons name="md-contact" size={28} color="white" />
         }
+    ],
+    bateaux : [
+      {
+        title: "De la Brise",
+        componentPath: 'ProductList',
+        image:require('../../assets/images/deLaBrise.png')
+
+      },
+      {
+        title: "Saphir",
+        componentPath: 'Detail',
+        icon: <Ionicons name="md-boat" size={28} color="white" />
+      },
+      {
+        title: "Gast Micher",
+        componentPath: 'Detail',
+        icon: <Ionicons name="md-boat" size={28} color="white" />
+      },
+      {
+        title: "Aquilon",
+        componentPath: 'Detail',
+        image: require('../../assets/images/ancre.png'),
+      }
     ]
 };
+
 
 const reducer = (state = INITIAL_STATE, action) => {
     return state;

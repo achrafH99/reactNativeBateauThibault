@@ -13,6 +13,7 @@ import getRessources from "../services/apirest";
 import {Header} from "react-native-elements"
 import CartComponent from '../components/CartComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const val = 1; // numero categorie
 const productList = products.filter(value => {
@@ -66,15 +67,17 @@ export class  ProductList extends Component {
     render(){
         return (
             <SafeAreaView>
+
                 <Header
-                    containerStyle = {{backgroundColor: "bue",opacity: 0.7,height : 70, paddingBottom:25}}
+                    containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25}}
                     rightComponent={<CartComponent products={this.props.cartProducts} navigation={this.props.navigation}/>}
                 />
+                <ScrollView>
                 <List navigation={this.props.navigation} list={this.state.products.map( (product,i) => {
                     return (
                         <View key={product.name+" "+i} style={styles.product}>
                             <PricingCard
-                            containerStyle={{width:350,display:"flex",justifyContent:"center"}}
+                            containerStyle={{width:350,display:"flex",justifyContent:"center", borderRadius:10}}
                             color="#4f9deb"
                             title={product.name}
                             price={product.price + "€"}
@@ -84,6 +87,8 @@ export class  ProductList extends Component {
                         </View>
                     )
                 })}/>
+                </ScrollView>
+
             </SafeAreaView>
 
         )

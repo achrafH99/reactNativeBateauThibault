@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { Card, ListItem } from 'react-native-elements';
 import { Value } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {incrementQuantity,decrementQuantity} from "../store/actions/cartActions";
 import images from "../services/images";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
+import { Header } from "react-native-elements"
+import CartComponent from '../components/CartComponent';
 
 class Cart extends Component {
   constructor(props) {
@@ -17,43 +19,78 @@ class Cart extends Component {
     };
   }
 
-  add(id){
-    this.props.incrementQuantity(id);
+  add(element){
+
+    this.props.incrementQuantity(element);
   }
 
-  remove(id){
-    this.props.decrementQuantity(id);
+  remove(element){
+
+     this.props.decrementQuantity(element);
+  }
+
+  getPriceTotalProduct(element){
+    return element.quantity * element.product.price;
+  }
+
+  getTotal(){
+    let total = 0;
+    this.props.cartProducts.forEach(element => {
+        total += this.getPriceTotalProduct(element);
+    });
+    return total;
   }
 
   render() {
-      console.log(this.props.cartProducts)
         return (
             <ImageBackground source={images["background"]} style={styles.image}>
 
-                <SafeAreaView >
-                   
-                    {   
+                <SafeAreaView style={{flex: 1,paddingBottom:10}} >
+                  
+                  <Header
+                    containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25, marginBottom: 30}}
+                    centerComponent={{ text: 'My Cart', style: { color: '#fff', fontWeight:"bold", fontSize:32 }}}
+                />
+              <ScrollView>
+                <View style={{paddingHorizontal : 10}}>
+                   {   
                         
                         this.props.cartProducts.map((value,i) => {
                             return (
-                                <ListItem key={i} bottomDivider   linearGradientProps={{
-                                    colors: ['#1eb7c5','#00909d'],
-                                    start: { x: 1, y: 0 },
-                                    end: { x: 0.2, y: 0 },
-                                  }}>
+                                <ListItem key={i} bottomDivider  >
                                 <ListItem.Content>
-                                  <ListItem.Title style={{color:"white"}}>{value.product.name}</ListItem.Title>
-                                  <ListItem.Subtitle style={{color:"white"}}>{value.product.comments}</ListItem.Subtitle>
+                                  <ListItem.Title style={{color:"black"}}>{value.product.name}</ListItem.Title>
+                                  <ListItem.Subtitle style={{color:"blue"}}>{value.product.comments}</ListItem.Subtitle>
                                 </ListItem.Content>
-                                <Ionicons name="md-remove-circle" size={24} color="#16fce0" onPress={() => this.remove(value)} />
+                                <Ionicons name="md-remove-circle" size={32} color={value.quantity < 2 ? "grey" : "#008cdc"} onPress={() => value.quantity > 1 ? this.remove(value.product.id) : null} />
                                 <Text>{value.quantity}</Text>
-                                <Ionicons name="md-add-circle" size={24} color="#16fce0" onPress={() => this.add(value)}/>
+                                <Ionicons name="md-add-circle" size={32} color="#008cdc" onPress={() => this.add(value.product.id)}/>
                                 
                               </ListItem>
                             );
                         })
                     }
-                   
+                </View>
+
+                <Card containerStyle={{marginTop : 70, borderRadius: 10}}>
+                  <Card.Title>Price</Card.Title>
+                  <Card.Divider/>
+                  {
+                    this.props.cartProducts.map((value,i) => {
+                      return (
+                        <ListItem key={i} bottomDivider   >
+                                <ListItem.Content>
+                                  <ListItem.Title style={{color:"black"}}>{value.quantity + " x "+value.product.name}</ListItem.Title>
+                                </ListItem.Content>
+                      <Text style={{color:"Black", fontSize : 32}}>{this.getPriceTotalProduct(value)+"€"}</Text>
+                        </ListItem>
+                      )
+                    })
+                  }
+                  <Card.Divider/>
+                  <Text style={{color:"Black", fontSize : 32, textAlign : "center"}}>{"Total : " + this.getTotal() + "€"}</Text>
+                </Card>
+                  </ScrollView>   
                 </SafeAreaView>
                 </ImageBackground>
         );
@@ -67,7 +104,7 @@ const styles = StyleSheet.create({
     image : {
         flex: 1,
         resizeMode: "cover",
-        justifyContent: "center"
+        
     },
     quantity: {fontSize:28},
     buttonQuantity : {

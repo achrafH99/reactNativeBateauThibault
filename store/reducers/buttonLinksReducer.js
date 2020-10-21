@@ -11,7 +11,7 @@ let INITIAL_STATE = {
             width:"98%",
             // paddingHorizontal: 4,
             paddingVertical: 21,
-            backgroundColor: "#1692BE",
+            backgroundColor: "#194d82",
             borderColor:"#0D6B8D",
             borderWidth: 2,
             borderRadius: 15,

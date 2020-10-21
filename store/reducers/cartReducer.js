@@ -1,4 +1,5 @@
 import { Value } from "react-native-reanimated";
+import { incrementQuantity } from "../actions/cartActions";
 
 let INITIAL_STATE = {
     products: []
@@ -11,12 +12,34 @@ let cartReducer = (state = INITIAL_STATE, action) => {
         case "REMOVE_PRODUCT":
             return {...state, products: state.products.filter(value=>value.product.id!=action.value.product.id)};
         case "INCREMENT_QUANTITY" :
-            return  {...state, products: [...state.products.filter(value => value.product.id != action.value.product.id),{quantity : action.value.quantity + 1, product : action.value.product}] };
+            return  {...state, products: increment(state.products,action.value) };
         case "DECREMENT_QUANTITY" :
-            return  {...state, products: [...state.products.filter(value => value.product.id != action.value.product.id),{quantity : action.value.quantity - 1, product : action.value.product}] };
+            return  {...state, products: decrement(state.products,action.value) };
         default:
             return state;
     }
 };
+
+const increment = (array,id) => {
+    const arr = [];
+    array.forEach(element => {
+        if(element.product.id == id){
+            element.quantity += 1;
+        }
+        arr.push(element);
+    });
+    return arr;
+}
+
+const decrement = (array,id) => {
+    const arr = [];
+    array.forEach(element => {
+        if(element.product.id == id){
+            element.quantity -= 1;
+        }
+        arr.push(element);
+    });
+    return arr;
+}
 
 export default cartReducer;

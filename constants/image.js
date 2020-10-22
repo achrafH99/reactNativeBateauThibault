@@ -6,7 +6,7 @@ const images = {
     poulpe: {
         imgName: 'poulpe',
         uri:  require('../assets/images/poulpe.png')
-    }
+    },
 }
 
 export default images

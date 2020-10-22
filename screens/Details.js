@@ -28,8 +28,8 @@ class Details extends Component {
         return (
             <ImageBackground source={images["background"]} style={styles.image} >
                 <SafeAreaView style={styles.details}>
-                    <Card containerStyle={{ padding: 0, width: "90%", height: "80%", borderRadius: 25 }}>
-                        <Image source={this.state.data.image} style={{ width: "100%", borderTopLeftRadius: 25, borderTopRightRadius: 25 }}></Image>
+                    <Card containerStyle={{ padding: 0, width: "90%", height: "80%", borderRadius: 25, overflow: "scroll" }}>
+                        <Image source={this.state.data.image} style={{ width: "100%", height: "100%", borderTopLeftRadius: 25, borderTopRightRadius: 25 }}></Image>
                         <View style={styles.text}>
                             <View>
                                 <Text style={styles.title}>{this.state.data.title}</Text>
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     text: {
-        height: "55%",
         flexDirection: "column",
         justifyContent: "space-between",
     }
@@ -83,6 +82,9 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "100",
         textAlign: "center",
+        marginLeft: 10,
+        marginRight: 10,
+        paddingTop: 25
     }
 })
 

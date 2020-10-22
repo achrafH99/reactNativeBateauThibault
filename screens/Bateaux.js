@@ -13,8 +13,8 @@ class BateauxPage extends Component{
   }
 
 
-  navigate(url){
-    this.props.navigation.navigate(url);
+  navigate(url, params){
+    this.props.navigation.navigate(url, params);
   }
 
   render(){
@@ -29,7 +29,10 @@ class BateauxPage extends Component{
                (this.props.buttonLinks.map(value =>
                 (<TouchableOpacity
                 style={value.style ? value.style : styles.button}
-                onPress={() => this.navigate(value.componentPath)}>
+                onPress={() => this.navigate(value.componentPath, {
+                  index: value.index,
+                  type: 'bateaux'
+                })}>
                 <Image
                 style={styles.tinyLogo}
                 source={value.image}

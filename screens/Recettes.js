@@ -13,8 +13,8 @@ class RecettesPage extends Component{
   }
 
 
-  navigate(url){
-    this.props.navigation.navigate(url);
+  navigate(url, params){
+    this.props.navigation.navigate(url, params);
   }
 
   render(){
@@ -29,7 +29,10 @@ class RecettesPage extends Component{
                (this.props.buttonLinks.map(value =>
                 (<TouchableOpacity
                 style={value.style ? value.style : styles.button}
-                onPress={() => this.navigate(value.componentPath)}>
+                onPress={() => this.navigate(value.componentPath, {
+                  index: value.index,
+                  type: 'recettes'
+                })}>
                 <Image
                 style={styles.tinyLogo}
                 source={value.image}

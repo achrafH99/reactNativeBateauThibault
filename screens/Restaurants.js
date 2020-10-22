@@ -10,8 +10,8 @@ class RestaurantsPage extends Component{
   constructor(props){
     super(props);
   }
-  navigate(url){
-    this.props.navigation.navigate(url);
+  navigate(url, params){
+    this.props.navigation.navigate(url, params);
   }
   render(){
     return (
@@ -24,8 +24,12 @@ class RestaurantsPage extends Component{
              { this.props.buttonLinks &&
                (this.props.buttonLinks.map(value =>
                 (<TouchableOpacity
+                key={value.title}
                 style={value.style ? value.style : styles.button}
-                onPress={() => this.navigate(value.componentPath)}>
+                onPress={() => this.navigate(value.componentPath, {
+                  index: value.index,
+                  type: 'restaurants'
+                })}>
                 {value.icon}
                   <Text style={styles.buttonText}>{value.title}</Text>
                 </TouchableOpacity>)))

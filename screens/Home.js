@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
 import { Component } from 'react';
-import { Button } from 'react-native-elements';
+import { Button ,Header,Card,Icon} from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,8 +17,21 @@ class HomePage extends Component{
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={images["background"]} style={styles.image}>
-         <View style={styles.part}>
+          <View >
+            <Card containerStyle={{borderRadius:10,backgroundColor:"black"}}>
+              <Card.Title style={{color:"white"}}>HELLO WORLD</Card.Title>
+              <Card.Divider/>
+              <Text style={styles.textCard}>
+              Vente en direct de notre bateau
+              </Text>
+              <Text style={styles.textCard}>
+              Produits selon la saison,Livraison sur Paris
+              </Text>
+              <Text style={styles.textCard}>
+              0663999978
+              </Text>
 
+            </Card>
           </View>
           <View style={styles.part}>
              { this.props.buttonLinks &&
@@ -108,5 +121,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
+    marginTop:"30%"
+  },
+  textCard: {
+    marginBottom: 10,
+    color:"white",
+    textAlign:"center"
   }
 });

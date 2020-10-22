@@ -34,9 +34,12 @@ export default function App() {
     <Provider store={store}>
       <SafeAreaProvider>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator  initialRouteName="Home" style={styles.container} screenOptions={{headerShown : false }}>
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Detail" component={Detail}/>
+          <Stack.Navigator  initialRouteName="Home" style={styles.container} screenOptions={{headerShown : true }}>
+            <Stack.Screen name="Home" component={Home} options={{ title: 'My home',headerStyle: {
+            backgroundColor: 'black',opacity:1, alignItems:'center'},
+            headerTitleStyle: { alignSelf: 'center' },
+            headerTintColor: 'white'}}/>
+            <Stack.Screen name="Detail" component={Detail} />
             <Stack.Screen name="ProductList" component={ProductList}/>
             <Stack.Screen name="CategoryList" component={CategoryList}/>
             <Stack.Screen name="Bateaux" component={Bateaux}/>

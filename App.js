@@ -34,7 +34,7 @@ export default function App() {
     <Provider store={store}>
       <SafeAreaProvider>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator  initialRouteName="Home" style={styles.container} screenOptions={{headerShown : true }}>
+          <Stack.Navigator  initialRouteName="Home" style={styles.container} screenOptions={{headerShown : false }}>
             <Stack.Screen name="Home" component={Home} options={{ title: 'My home',headerStyle: {
             backgroundColor: 'black',opacity:1, alignItems:'center'},
             headerTitleStyle: { alignSelf: 'center' },

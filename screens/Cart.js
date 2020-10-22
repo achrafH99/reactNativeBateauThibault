@@ -5,7 +5,7 @@ import { Value } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {incrementQuantity,decrementQuantity} from "../store/actions/cartActions";
+import {incrementQuantity,decrementQuantity,deleteProduct} from "../store/actions/cartActions";
 import images from "../services/images";
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
@@ -22,6 +22,10 @@ class Cart extends Component {
   add(element){
 
     this.props.incrementQuantity(element);
+  }
+
+  deleteProduct(id){
+    this.props.deleteProduct(id);
   }
 
   remove(element){
@@ -65,6 +69,8 @@ class Cart extends Component {
                                 <Ionicons name="md-remove-circle" size={32} color={value.quantity < 2 ? "grey" : "#008cdc"} onPress={() => value.quantity > 1 ? this.remove(value.product.id) : null} />
                                 <Text>{value.quantity}</Text>
                                 <Ionicons name="md-add-circle" size={32} color="#008cdc" onPress={() => this.add(value.product.id)}/>
+                                <Ionicons name="md-trash" size={32} color="red" onPress={() => this.deleteProduct(value.product.id)}/>
+
                                 
                               </ListItem>
                             );
@@ -121,7 +127,7 @@ const mapStateToProps = (state) => {
 }
 
 const dispatch = (dispatch) => {
-    return bindActionCreators({incrementQuantity: incrementQuantity, decrementQuantity:decrementQuantity},dispatch)
+    return bindActionCreators({incrementQuantity: incrementQuantity, decrementQuantity:decrementQuantity,deleteProduct:deleteProduct},dispatch)
 }
 
 export default connect(mapStateToProps, dispatch)(Cart);

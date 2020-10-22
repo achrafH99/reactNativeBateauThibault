@@ -33,3 +33,12 @@ export const decrementQuantity = (data) => {
         })
     }
 }
+
+export const deleteProduct = (data) => {
+    return dispatch => {
+        dispatch({
+            type : "DELETE_PRODUCT",
+            value: data
+        })
+    }
+}

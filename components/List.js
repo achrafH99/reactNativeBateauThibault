@@ -8,16 +8,11 @@ export default class List extends Component {
     }
     render() {
         return (
-            <View style={styles.list}>
-            <ImageBackground source={images["background"]} style={styles.image}>
-                {/* <View style={styles.title}>
-                    <Text style={styles.titleTxt}>Choisissez vos produits</Text>
-                </View> */}
-                <ScrollView contentContainerStyle={styles.elements}>
+            
+             <ScrollView contentContainerStyle={{paddingBottom: 180, marginTop: 15}}>
                     {this.props.list}
-                </ScrollView>
-            </ImageBackground>
-            </View>
+            </ScrollView>
+            
         )
     }
 }
@@ -26,7 +21,10 @@ const styles= StyleSheet.create({
     list:{
         width:"100%",
         height: "100%",
-        overflow: "scroll"
+        display: "flex",
+        flexDirection : "column",
+        justifyContent: "space-between"
+        // overflow: "scroll"
     },
     title: {
         display:"flex",

@@ -26,7 +26,7 @@ let INITIAL_STATE = {
              overflow: "visible"
 
           },
-          icon:<AntDesign name="tagso" size={28} color="#008cdc" />
+          icon:<Entypo name="shop" size={28} color="#008cdc" />
 
         },
         {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Button, ToastAndroid } from 'react-native';
-import { Card, ListItem,Icon, Overlay,Input } from 'react-native-elements';
+import { Card, ListItem,Icon, Overlay,Input, Divider } from 'react-native-elements';
 import { Value } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
@@ -16,14 +16,17 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      validate : false,
       errorMessage: '',
       visible : false,
       lastName : '',
       firstName : '',
       address : '',
       city : '',
+      disabled : true
     };
   }
+
 
   add(element){
 
@@ -66,9 +69,36 @@ class Cart extends Component {
     this.goToHome();
   }
 
+  isDisabled() {
+
+    return (this.state.lastName.length ==0 ||
+      this.state.firstName.length ==0 ||
+      this.state.address.length ==0||
+      this.state.city.length == 0);
+      
+  }
+
   toggleOverlay(){
     this.setState({visible : !this.state.visible})
   }
+
+  validate(){
+    this.setState({validate : true});
+  }
+
+  clear(){
+    return {lastName : '', firstName : '', address : '',city : ''};
+  }
+
+  handleChange(value){
+    const ib = {...value, disabled : this.isDisabled()};
+    this.setState(ib);
+  }
+
+  cancel(){
+    this.setState({visible: false,validate : false});
+  }
+
 
   render() {
         return (
@@ -126,16 +156,74 @@ class Cart extends Component {
                     title='Commander' onPress={() => this.toggleOverlay()} />
                 </Card>
                   </ScrollView>
-                  <Overlay fullScreen={false} overlayStyle={{height: "40%", width: "90%", display: "flex", justifyContent:"space-around"}}  isVisible={this.state.visible} onBackdropPress={() => this.toggleOverlay}>
-                      <TextInput style={styles.input} placeholder="Last Name" value={this.state.valueLastName} onChange={(value) => this.setState({lastName : value })}></TextInput>
-                      <TextInput style={styles.input} placeholder="First Name" value={this.state.valueLastName} onChange={(value) => this.setState({firstName : value })}></TextInput>
-                      <TextInput style={styles.input} placeholder="Address" value={this.state.valueLastName} onChange={(value) => this.setState({address : value })}></TextInput>
-                      <TextInput style={styles.input} placeholder="City" value={this.state.valueLastName} onChange={(value) => this.setState({city : value })}></TextInput>
-                    <Button
-                    icon={<Icon name='code' color='#ffffff' />}
-                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                    titleStyle={{fontSize:28}}
-                    title='Payer' onPress={() => this.payer()} />
+                  <Overlay fullScreen={false} overlayStyle={{height: "50%", width: "90%", display: "flex", justifyContent:"space-around"}}  isVisible={this.state.visible} onBackdropPress={() => this.toggleOverlay}>
+                      
+                    {
+                      
+                      this.state.validate == false && (
+                        <View>
+                          <TextInput style={styles.input} placeholder="Last Name" value={this.state.valueLastName} onChangeText={(value) => this.handleChange({lastName : value })}></TextInput>
+                          <TextInput style={styles.input} placeholder="First Name" value={this.state.valueLastName} onChangeText={(value) => this.handleChange({firstName : value })}></TextInput>
+                          <TextInput style={styles.input} placeholder="Address" value={this.state.valueLastName} onChangeText={(value) => this.handleChange({address : value })}></TextInput>
+                          <TextInput style={styles.input} placeholder="City" value={this.state.valueLastName} onChangeText={(value) => this.handleChange({city : value })}></TextInput>
+                        <Divider>
+
+                        </Divider>
+                        <Button
+                        icon={<Icon name='code' color='#ffffff' />}
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        titleStyle={{fontSize:28}}
+                        title='Validate' onPress={() => this.validate()} disabled={this.state.disabled } />
+                      </View>
+                      )
+                    }
+                    {
+
+                      this.state.validate == true && (
+                      <View>
+                        <ListItem>
+                          <ListItem.Content>
+                              <ListItem.Title style={{color:"black"}}>{"Last Name : " + this.state.lastName}</ListItem.Title>
+                          </ListItem.Content>
+                        </ListItem>
+                        <ListItem>
+                            <ListItem.Content>
+                                <ListItem.Title style={{color:"black"}}>{"First Name : " + this.state.firstName}</ListItem.Title>
+                            </ListItem.Content>
+                        </ListItem>
+                        <ListItem>
+                          <ListItem.Content>
+                              <ListItem.Title style={{color:"black"}}>{"Address : " + this.state.address}</ListItem.Title>
+                          </ListItem.Content>
+                        </ListItem>
+                        <ListItem>
+                          <ListItem.Content>
+                              <ListItem.Title style={{color:"black"}}>{"City : " + this.state.city}</ListItem.Title>
+                          </ListItem.Content>
+                        </ListItem>
+                        <Divider></Divider>
+                        <ListItem>
+                          <ListItem.Content>
+                              <ListItem.Title style={{color:"blue"}}>{"Total : " + this.getTotal() + "€"}</ListItem.Title>
+                          </ListItem.Content>
+                        </ListItem>
+                          <Divider></Divider>
+                        
+                        <Button
+                        icon={<Icon name='code' color='#ffffff' />}
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+                        titleStyle={{fontSize:28}}
+                        title='Cancel' onPress={() => this.cancel()} />  
+                        <Text></Text>
+                        <Button
+                        icon={<Icon name='code' color='#ffffff' />}
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        titleStyle={{fontSize:28}}
+                        title='Payer' onPress={() => this.payer()} />
+                          
+
+                      </View>)
+                    }
                   </Overlay>
                 </SafeAreaView>
                 </ImageBackground>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { Card, ListItem } from 'react-native-elements';
+import { View, Text, StyleSheet, ImageBackground, Button, ToastAndroid } from 'react-native';
+import { Card, ListItem,Icon, Overlay,Input } from 'react-native-elements';
 import { Value } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {incrementQuantity,decrementQuantity,deleteProduct} from "../store/actions/cartActions";
+import {incrementQuantity,decrementQuantity,deleteProduct,deleteAllProducts} from "../store/actions/cartActions";
 import images from "../services/images";
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import { Header } from "react-native-elements"
 import CartComponent from '../components/CartComponent';
@@ -16,12 +16,22 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      errorMessage: '',
+      visible : false,
+      lastName : '',
+      firstName : '',
+      address : '',
+      city : '',
     };
   }
 
   add(element){
 
     this.props.incrementQuantity(element);
+  }
+
+  deleteAllProducts(){
+    this.props.deleteAllProducts();
   }
 
   deleteProduct(id){
@@ -31,6 +41,10 @@ class Cart extends Component {
   remove(element){
 
      this.props.decrementQuantity(element);
+  }
+
+  goToHome(){
+    this.props.navigation.navigate("Home");
   }
 
   getPriceTotalProduct(element){
@@ -43,6 +57,17 @@ class Cart extends Component {
         total += this.getPriceTotalProduct(element);
     });
     return total;
+  }
+
+  payer(){
+    ToastAndroid.show("Le paiement a été effectué", ToastAndroid.SHORT);
+    this.toggleOverlay();
+    this.deleteAllProducts();
+    this.goToHome();
+  }
+
+  toggleOverlay(){
+    this.setState({visible : !this.state.visible})
   }
 
   render() {
@@ -95,8 +120,23 @@ class Cart extends Component {
                   }
                   <Card.Divider/>
                   <Text style={{color:"Black", fontSize : 32, textAlign : "center"}}>{"Total : " + this.getTotal() + "€"}</Text>
+                  <Button
+                    icon={<Icon name='code' color='#ffffff' />}
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title='Commander' onPress={() => this.toggleOverlay()} />
                 </Card>
-                  </ScrollView>   
+                  </ScrollView>
+                  <Overlay fullScreen={false} overlayStyle={{height: "40%", width: "90%", display: "flex", justifyContent:"space-around"}}  isVisible={this.state.visible} onBackdropPress={() => this.toggleOverlay}>
+                      <TextInput style={styles.input} placeholder="Last Name" value={this.state.valueLastName} onChange={(value) => this.setState({lastName : value })}></TextInput>
+                      <TextInput style={styles.input} placeholder="First Name" value={this.state.valueLastName} onChange={(value) => this.setState({firstName : value })}></TextInput>
+                      <TextInput style={styles.input} placeholder="Address" value={this.state.valueLastName} onChange={(value) => this.setState({address : value })}></TextInput>
+                      <TextInput style={styles.input} placeholder="City" value={this.state.valueLastName} onChange={(value) => this.setState({city : value })}></TextInput>
+                    <Button
+                    icon={<Icon name='code' color='#ffffff' />}
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    titleStyle={{fontSize:28}}
+                    title='Payer' onPress={() => this.payer()} />
+                  </Overlay>
                 </SafeAreaView>
                 </ImageBackground>
         );
@@ -117,6 +157,10 @@ const styles = StyleSheet.create({
         backgroundColor : "white",
         borderRadius: 100,
         paddingHorizontal : 15
+    },
+    input : {
+      fontSize: 22,
+      marginBottom : 20
     }
 });
 
@@ -127,7 +171,7 @@ const mapStateToProps = (state) => {
 }
 
 const dispatch = (dispatch) => {
-    return bindActionCreators({incrementQuantity: incrementQuantity, decrementQuantity:decrementQuantity,deleteProduct:deleteProduct},dispatch)
+    return bindActionCreators({incrementQuantity: incrementQuantity, decrementQuantity:decrementQuantity,deleteProduct:deleteProduct,deleteAllProducts:deleteAllProducts},dispatch)
 }
 
 export default connect(mapStateToProps, dispatch)(Cart);

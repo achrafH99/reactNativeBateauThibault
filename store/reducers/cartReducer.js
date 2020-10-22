@@ -16,7 +16,9 @@ let cartReducer = (state = INITIAL_STATE, action) => {
         case "DECREMENT_QUANTITY" :
             return  {...state, products: decrement(state.products,action.value) };
         case "DELETE_PRODUCT" : 
-            return {...state, products: deleteProduct(state.products,action.value)}
+            return {...state, products: deleteProduct(state.products,action.value)};
+        case "DELETE_ALL_PRODUCTS" :
+            return {...state,products: deleteAllProducts()};
         default:
             return state;
     }
@@ -48,6 +50,10 @@ const deleteProduct = (array,id) => {
     let arr=[];
     arr = array.filter(value => value.product.id != id)
     return arr;
+}
+
+const deleteAllProducts = () => {
+    return [];
 }
 
 export default cartReducer;

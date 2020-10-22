@@ -42,3 +42,12 @@ export const deleteProduct = (data) => {
         })
     }
 }
+
+export const deleteAllProducts = (data) => {
+    return dispatch => {
+        dispatch({
+            type : "DELETE_ALL_PRODUCTS",
+            value: data
+        })
+    }
+}

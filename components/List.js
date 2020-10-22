@@ -10,9 +10,9 @@ export default class List extends Component {
         return (
             <View style={styles.list}>
             <ImageBackground source={images["background"]} style={styles.image}>
-                <View style={styles.title}>
+                {/* <View style={styles.title}>
                     <Text style={styles.titleTxt}>Choisissez vos produits</Text>
-                </View>
+                </View> */}
                 <ScrollView contentContainerStyle={styles.elements}>
                     {this.props.list}
                 </ScrollView>

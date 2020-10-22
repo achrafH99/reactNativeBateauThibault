@@ -16,10 +16,14 @@ class HomePage extends Component{
   render(){
     return (
       <SafeAreaView style={styles.container}>
+                <Header
+                  containerStyle = {{backgroundColor: "#008cdc",height : 70,paddingBottom:25}}
+                    centerComponent={<Text style={{fontSize: 32, color : 'white'}}>Home</Text>}
+          />
         <ImageBackground source={images["background"]} style={styles.image}>
           <View >
-            <Card containerStyle={{borderRadius:10,backgroundColor:"black"}}>
-              <Card.Title style={{color:"white"}}>HELLO WORLD</Card.Title>
+            <Card containerStyle={{borderRadius:10}}>
+              <Card.Title style={{color:"black"}}>Le Bateau de Thibault</Card.Title>
               <Card.Divider/>
               <Text style={styles.textCard}>
               Vente en direct de notre bateau
@@ -30,7 +34,6 @@ class HomePage extends Component{
               <Text style={styles.textCard}>
               0663999978
               </Text>
-
             </Card>
           </View>
           <View style={styles.part}>
@@ -61,7 +64,8 @@ const styles = StyleSheet.create({
     flex: 1,
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+    
   },
   head: {
     flex: 1,
@@ -84,35 +88,36 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   button:{
-    width:"48%",
-    backgroundColor: "#194d82",
-    borderColor:"#023d52",
+    width:"44%",
+    backgroundColor: "white",
+    borderColor:"white",
     borderWidth: 2,
     // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5
+    // marginHorizontal: 5,
     borderRadius: 15,
-    elevation: 8,
+    elevation: 50,
     // textAlign: "center",
-     opacity : 0.9,
+    //  opacity : 0.9,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "center",
     paddingHorizontal:5
 
   },
   buttonText:{
-    fontSize: 18,
-    color: "white",
-    fontWeight: "bold",
+    fontSize: 15,
+    color: "black",
+    // fontWeight: "bold",
     // alignSelf: "center",
     textTransform: "uppercase",
     textAlign: "center",
     // marginHorizontal: 10,
-    overflow: "visible"
+    overflow: "visible",
+    marginLeft : 10
   },
   part: {
     height: "50%",
@@ -121,11 +126,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    marginTop:"30%"
+    marginTop:"25%",
+    marginLeft :10
+    
   },
   textCard: {
     marginBottom: 10,
-    color:"white",
+    color:"black",
     textAlign:"center"
   }
 });

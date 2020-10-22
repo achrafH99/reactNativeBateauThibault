@@ -108,7 +108,7 @@ class Cart extends Component {
                   
                   <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25, marginBottom: 30}}
-                    centerComponent={{ text: 'My Cart', style: { color: '#fff', fontWeight:"bold", fontSize:32 }}}
+                    centerComponent={{ text: 'My Cart', style: { color: '#fff', fontSize:32 }}}
                 />
               <ScrollView>
                 <View style={{paddingHorizontal : 10}}>
@@ -149,7 +149,7 @@ class Cart extends Component {
                     })
                   }
                   <Card.Divider/>
-                  <Text style={{color:"Black", fontSize : 32, textAlign : "center"}}>{"Total : " + this.getTotal() + "€"}</Text>
+                  <Text style={{color:"Black", fontSize : 32, textAlign : "center", marginBottom : 15}}>{"Total : " + this.getTotal() + "€"}</Text>
                   <Button
                     icon={<Icon name='code' color='#ffffff' />}
                     buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}

@@ -11,7 +11,7 @@ export default function CategoryList({ navigation }) {
         <SafeAreaView>
                 <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 100, paddingBottom:0, marginBottom: 0}}
-                    centerComponent={{ text: 'Categories', style: { color: '#fff', fontWeight:"bold", fontSize:32 }}}
+                    centerComponent={{ text: 'Categories', style: { color: '#fff', fontSize:32 }}}
                 />
                     <List navigation={navigation} list={categorie.map(({ name, screen, id }) => {
             return <Category key={name} navigation={navigation} name={name} image={Img.poulpe.uri} screen={screen} id={id} />

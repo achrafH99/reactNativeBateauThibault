@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {  View, StyleSheet, Alert,Icon } from 'react-native'
+import {  View, StyleSheet, Alert,Icon, Text } from 'react-native'
 import { Card } from "@paraboly/react-native-card";
-import { MaterialIcons,Ionicons,Fontisto, Foundation, AntDesign } from '@expo/vector-icons';
+import { MaterialIcons,Ionicons,Fontisto, Foundation, AntDesign, Entypo } from '@expo/vector-icons';
 import List from '../components/List';
 import categorie from '../constants/categorie'
 import products from '../constants/data'
@@ -71,22 +71,28 @@ export class  ProductList extends Component {
                 <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25}}
                     rightComponent={<CartComponent products={this.props.cartProducts} navigation={this.props.navigation}/>}
+                    leftComponent={<Entypo name="home" size={32} color="white" />}
+                    centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}
                 />
                 <ScrollView>
-                <List navigation={this.props.navigation} list={this.state.products.map( (product,i) => {
-                    return (
-                        <View key={product.name+" "+i} style={styles.product}>
-                            <PricingCard
-                            containerStyle={{width:350,display:"flex",justifyContent:"center", borderRadius:10}}
-                            color="#4f9deb"
-                            title={product.name}
-                            price={product.price + "€"}
-                            info={[ product.comments,"Unité : "+product.unit ,product.availability ? "Disponible" : "Indisponible" ]}
-                            infoStyle={{color:"black"}}
-                            button={{ title: '', icon: <MaterialIcons name="shopping-cart" size={28} color="white" />, onButtonPress: () => this.toggleCart(product) }}  />
-                        </View>
+                {
+                    this.state.products && (
+                        <List navigation={this.props.navigation} list={this.state.products.map( (product,i) => {
+                            return (
+                                <View key={product.name+" "+i} style={styles.product}>
+                                    <PricingCard
+                                    containerStyle={{width:350,display:"flex",justifyContent:"center", borderRadius:10}}
+                                    color="#4f9deb"
+                                    title={product.name}
+                                    price={product.price + "€"}
+                                    info={[ product.comments,"Unité : "+product.unit ,product.availability ? "Disponible" : "Indisponible" ]}
+                                    infoStyle={{color:"black"}}
+                                    button={{ title: '', icon: <MaterialIcons name="shopping-cart" size={28} color="white" />, onButtonPress: () => this.toggleCart(product) }}  />
+                                </View>
+                            )
+                        })}/>
                     )
-                })}/>
+                }
                 </ScrollView>
 
             </SafeAreaView>

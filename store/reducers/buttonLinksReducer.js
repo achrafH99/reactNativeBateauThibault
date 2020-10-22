@@ -8,46 +8,46 @@ let INITIAL_STATE = {
           title: "Produits et Promotions",
           componentPath: 'CategoryList',
           style:{
-            width:"98%",
+            width:"94%",
             // paddingHorizontal: 4,
             paddingVertical: 21,
-            backgroundColor: "#194d82",
-            borderColor:"#0D6B8D",
+            backgroundColor: "white",
+            borderColor:"white",
             borderWidth: 2,
             borderRadius: 15,
             elevation: 8,
-             opacity : 0.8,
+            //  opacity : 0.8,
              paddingVertical: 30,
              display: "flex",
              flexDirection: "row",
              alignItems: "center",
-             justifyContent: "space-around",
+             justifyContent: "center",
              paddingHorizontal:5,
              overflow: "visible"
 
           },
-          icon:<AntDesign name="tagso" size={28} color="white" />
+          icon:<AntDesign name="tagso" size={28} color="#008cdc" />
 
         },
         {
           title: "Bateaux",
           componentPath: 'Bateaux',
-          icon: <Ionicons name="md-boat" size={28} color="white" />
+          icon: <Ionicons name="md-boat" size={28} color="#008cdc" />
         },
         {
           title: "Restaurants",
           componentPath: 'Restaurants',
-          icon: <Ionicons name="md-restaurant" size={28} color="white" />
+          icon: <Ionicons name="md-restaurant" size={28} color="#008cdc" />
         },
         {
           title: "Recettes",
           componentPath: 'Recettes',
-          icon:<Entypo name="menu" size={28} color="white" />
+          icon:<Entypo name="menu" size={28} color="#008cdc" />
         },
         {
           title: "Contact",
           componentPath: 'Contact',
-          icon:<Ionicons name="md-contact" size={28} color="white" />
+          icon:<Ionicons name="md-contact" size={28} color="#008cdc" />
         }
     ],
     bateaux : [

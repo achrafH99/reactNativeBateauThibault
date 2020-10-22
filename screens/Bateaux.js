@@ -22,7 +22,7 @@ class BateauxPage extends Component{
       <View style={styles.container}>
         <ImageBackground source={images["background"]} style={styles.image}>
          <View style={styles.part}>
-
+            
           </View>
           <View style={styles.part}>
              { this.props.buttonLinks &&

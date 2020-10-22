@@ -15,6 +15,7 @@ import Cart from './screens/Cart.js';
 import Recettes from './screens/Recettes.js'
 import Restaurants from './screens/Restaurants.js'
 import Details from './screens/Details.js';
+import Contact from './screens/Contact.js';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,7 @@ export default function App() {
             <Stack.Screen name="Bateaux" component={Bateaux}/>
             <Stack.Screen name="Cart" component={Cart}/>
             <Stack.Screen name="Recettes" component={Recettes}/>
+            <Stack.Screen name="Contact" component={Contact} />
             <Stack.Screen name="Restaurants" component={Restaurants}/>
 
           </Stack.Navigator>

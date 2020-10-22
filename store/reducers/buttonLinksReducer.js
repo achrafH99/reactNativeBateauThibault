@@ -46,7 +46,7 @@ let INITIAL_STATE = {
         },
         {
           title: "Contact",
-          componentPath: 'Detail',
+          componentPath: 'Contact',
           icon:<Ionicons name="md-contact" size={28} color="white" />
         }
     ],

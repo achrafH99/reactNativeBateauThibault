@@ -14,6 +14,7 @@ import Bateaux from './screens/Bateaux'
 import Cart from './screens/Cart.js';
 import Recettes from './screens/Recettes.js'
 import Restaurants from './screens/Restaurants.js'
+import Details from './screens/Details.js';
 
 const Stack = createStackNavigator();
 
@@ -39,7 +40,7 @@ export default function App() {
             backgroundColor: 'black',opacity:1, alignItems:'center'},
             headerTitleStyle: { alignSelf: 'center' },
             headerTintColor: 'white'}}/>
-            <Stack.Screen name="Detail" component={Detail} />
+            <Stack.Screen name="Detail" component={Details} />
             <Stack.Screen name="ProductList" component={ProductList}/>
             <Stack.Screen name="CategoryList" component={CategoryList}/>
             <Stack.Screen name="Bateaux" component={Bateaux}/>

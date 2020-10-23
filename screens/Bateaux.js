@@ -24,7 +24,7 @@ class BateauxPage extends Component{
       <SafeAreaView style={styles.container}>
       <Header
         containerStyle = {{backgroundColor: "black",height : 70,paddingBottom:25}}
-        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}/>
+        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Bateaux</Text>}/>
         <ImageBackground source={images["background"]} style={styles.image}>
          <View >
           <View style={styles.part}>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft:10
+    paddingLeft:2
 
   },
   buttonText:{

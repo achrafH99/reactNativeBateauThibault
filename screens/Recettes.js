@@ -24,7 +24,7 @@ class RecettesPage extends Component{
       <SafeAreaView style={styles.container}>
       <Header
         containerStyle = {{backgroundColor: "black",height : 70,paddingBottom:25}}
-        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}/>
+        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Recettes</Text>}/>
         <ImageBackground source={images["background"]} style={styles.image}>
 
       <View >

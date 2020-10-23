@@ -65,6 +65,15 @@ export class  ProductList extends Component {
         }
     }
 
+    goToHome(){
+        this.props.navigation.navigate("Home");
+    }
+
+    isInCart(id){
+        const boo = this.props.cartProducts.some(value => value.product.id == id);
+        return boo ? <MaterialIcons name="remove-shopping-cart" size={28} color="orange" /> : <MaterialIcons name="shopping-cart" size={28} color="white" />;
+    }
+
     render(){
         return (
             <SafeAreaView>
@@ -72,7 +81,7 @@ export class  ProductList extends Component {
                 <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25}}
                     rightComponent={<CartComponent products={this.props.cartProducts} navigation={this.props.navigation}/>}
-                    leftComponent={<Entypo name="home" size={32} color="white" />}
+                    leftComponent={<Entypo name="home" size={32} color="white" onPress={() => this.goToHome()} />}
                     centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}
                 />
                 <ImageBackground source={images["background"]} style={styles.image}>
@@ -90,7 +99,7 @@ export class  ProductList extends Component {
                                         price={product.price + "€"}
                                         info={[ product.comments,"Unité : "+product.unit ,product.availability ? "Disponible" : "Indisponible" ]}
                                         infoStyle={{color:"black"}}
-                                        button={{ title: '', icon: <MaterialIcons name="shopping-cart" size={28} color="white" />, onButtonPress: () => this.toggleCart(product) }}  />
+                                        button={{ title: '', icon: this.isInCart(product.id), onButtonPress: () => this.toggleCart(product) }}  />
                                     </View>
                                 )
                             })}/>

@@ -9,7 +9,7 @@ export default class List extends Component {
     render() {
         return (
             
-             <ScrollView contentContainerStyle={{paddingBottom: 180, marginTop: 15}}>
+             <ScrollView contentContainerStyle={{paddingBottom: 180, marginTop: 15, display: "flex", flexDirection: "column", alignItems: "center"}}>
                     {this.props.list}
             </ScrollView>
             

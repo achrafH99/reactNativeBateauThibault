@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import {incrementQuantity,decrementQuantity,deleteProduct,deleteAllProducts} from "../store/actions/cartActions";
 import images from "../services/images";
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons ,AntDesign} from '@expo/vector-icons';
+import { Ionicons ,AntDesign, Entypo} from '@expo/vector-icons';
 import { Header } from "react-native-elements"
 import CartComponent from '../components/CartComponent';
 import Toast from 'react-native-tiny-toast'
@@ -102,6 +102,10 @@ class Cart extends Component {
     this.setState({visible: false,validate : false});
   }
 
+  goToHome(){
+    this.props.navigation.navigate("Home");
+}
+
 
   render() {
         return (
@@ -112,6 +116,7 @@ class Cart extends Component {
                   <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25, marginBottom: 30}}
                     centerComponent={{ text: 'My Cart', style: { color: '#fff', fontSize:32 }}}
+                    leftComponent={<Entypo name="home" size={32} color="white" onPress={() => this.goToHome()} />}
                 />
               <ScrollView>
                 <View style={{paddingHorizontal : 10}}>

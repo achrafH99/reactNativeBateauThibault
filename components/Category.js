@@ -22,18 +22,17 @@ export default function Category({ name ,navigation, screen, icon, image, id }) 
         //     </View>
         // </TouchableOpacity>
 
-    <TouchableOpacity>
-            {/* <Card.Image source={image} /> */}
-            <Button
+    <TouchableOpacity
+
                 // icon={<MaterialIcons name="visibility" size={24} color="white" />}
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, width : "50%", alignSelf : "center"}}
+                style={styles.category}
                 title='Go' 
                 onPress={ () => {
                         navigation.navigate("ProductList", {
                             idCategorie: id
                         })
                     }
-                }/>
+                }>
             <View style={styles.item}>
                 <View style={styles.image}>
                     <Image source={image} style={styles.logo}/>
@@ -52,13 +51,14 @@ const styles = StyleSheet.create({
     borderColor:"#023d52",
     borderWidth: 2,
     borderRadius: 15,
-elevation: 8,
+    elevation: 8,
 // textAlign: "center",
  opacity : 0.9,
         padding: "2%",
         marginBottom: 20,
         borderWidth: .4,
-        width: "100%"
+        width: "90%",
+        
     },
     item:{
         flexDirection: "row",

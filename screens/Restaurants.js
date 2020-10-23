@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
 import { Component } from 'react';
-import { Button } from 'react-native-elements';
+import { Button,Header,Card } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -16,9 +16,27 @@ class RestaurantsPage extends Component{
   render(){
     return (
       <SafeAreaView style={styles.container}>
+      <Header
+        containerStyle = {{backgroundColor: "black",height : 70,paddingBottom:25}}
+        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Restaurants</Text>}/>
         <ImageBackground source={images["background"]} style={styles.image}>
-         <View style={styles.part}>
 
+      <View >
+         <View >
+         <Card containerStyle={{borderRadius:10}}>
+           <Card.Title style={{color:"black",fontSize:20}}>Restaurants partenaires</Card.Title>
+           <Card.Divider/>
+           <Text style={styles.textCard}>
+           Tous les restaurants partenaires avec le bateau de Thibault
+           </Text>
+           <Text style={styles.textCard}>
+           Produits selon la saison,Livraison sur Paris
+           </Text>
+           <Text style={styles.textCard}>
+           0663999978
+           </Text>
+         </Card>
+          </View>
           </View>
           <View style={styles.part}>
              { this.props.buttonLinks &&
@@ -52,22 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  head: {
-    flex: 1,
-    backgroundColor: 'red',
-    width:"100%",
-    paddingTop:"50%",
-    alignItems: 'center',
-  },
-  head2: {
-    flex: 1,
-    backgroundColor: 'blue',
-    width:"100%",
-    paddingTop:"50%",
-    alignItems: 'center',
-
+    justifyContent: 'center',
   },
   image: {
     flex: 1,
@@ -75,35 +78,36 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   button:{
-    width:"48%",
-    backgroundColor: "#1692BE",
-    borderColor:"#0D6B8D",
+    width:"44%",
+    backgroundColor: "white",
+    borderColor:"white",
     borderWidth: 2,
     // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5
+    // marginHorizontal: 5,
     borderRadius: 15,
-    elevation: 8,
+    elevation: 50,
     // textAlign: "center",
-    opacity : 0.8,
+    //  opacity : 0.9,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingHorizontal:5
+    paddingLeft:10
 
   },
   buttonText:{
-    fontSize: 18,
-    color: "white",
-    fontWeight: "bold",
+    fontSize: 15,
+    color: "black",
+     fontWeight: "bold",
     // alignSelf: "center",
     textTransform: "uppercase",
-    textAlign: "center",
     // marginHorizontal: 10,
-    overflow: "visible"
+    overflow: "visible",
+    marginLeft : 10,
+    justifyContent:"center"
+
   },
   part: {
     height: "50%",
@@ -112,5 +116,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
+    paddingLeft:12,
+    paddingBottom:50
+
+
+  },
+  textCard: {
+    marginBottom: 10,
+    color:"black",
+    textAlign:"center",
+    fontSize:18
   }
 });

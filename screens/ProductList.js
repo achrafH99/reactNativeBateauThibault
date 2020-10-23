@@ -32,7 +32,7 @@ export class  ProductList extends Component {
     componentDidMount(){
         getRessources('products')
         .then((value) => {
-            this.setState({products : this.props.route.params.idCategorie == 3? 
+            this.setState({products : this.props.route.params.idCategorie == 3?
                 value.data.filter(val => {
                     return val.sale==true
                 }):
@@ -48,7 +48,7 @@ export class  ProductList extends Component {
 
     addToCart(product){
         this.props.addProduct({quantity : 1,product : product});
-        
+
     }
 
     removeFromCart(product){
@@ -56,7 +56,7 @@ export class  ProductList extends Component {
     }
 
     toggleCart(element) {
-        
+
         const arr = this.props.cartProducts.filter(value => value.product.id == element.id);
         if(arr && arr.length > 0){
             this.removeFromCart(arr[0]);
@@ -79,14 +79,14 @@ export class  ProductList extends Component {
             <SafeAreaView>
 
                 <Header
-                    containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25}}
+                    containerStyle = {{backgroundColor: "black",height : 70, paddingBottom:25}}
                     rightComponent={<CartComponent products={this.props.cartProducts} navigation={this.props.navigation}/>}
                     leftComponent={<Entypo name="home" size={32} color="white" onPress={() => this.goToHome()} />}
                     centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}
                 />
                 <ImageBackground source={images["background"]} style={styles.image}>
 
-                    
+
                     {
                         this.state.products && (
                             <List navigation={this.props.navigation} list={this.state.products.map( (product,i) => {

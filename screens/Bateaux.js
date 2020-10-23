@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground,Image} from 'react-native';
 import { Component } from 'react';
 import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
-import { Button } from 'react-native-elements';
+import { Button,Card,Header } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 class BateauxPage extends Component{
 
@@ -19,10 +21,26 @@ class BateauxPage extends Component{
 
   render(){
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+      <Header
+        containerStyle = {{backgroundColor: "black",height : 70,paddingBottom:25}}
+        centerComponent={<Text style={{fontSize: 32, color: 'white'}}>Products</Text>}/>
         <ImageBackground source={images["background"]} style={styles.image}>
-         <View style={styles.part}>
-            
+         <View >
+          <View style={styles.part}>
+          <Card containerStyle={{borderRadius:10}}>
+            <Card.Title style={{color:"black",fontSize:20}}>Nos bateaux partenaires</Card.Title>
+            <Card.Divider/>
+            <Text style={styles.textCard}>
+            Tous les eaux mènent à Thibault
+            </Text>
+            <Text style={styles.textCard}>
+            Produits selon la saison,Livraison sur Paris
+            </Text>
+            <Text style={styles.textCard}>
+            0663999978
+            </Text>
+          </Card>
           </View>
           <View style={styles.part}>
              { this.props.buttonLinks &&
@@ -41,8 +59,10 @@ class BateauxPage extends Component{
                 </TouchableOpacity>)))
              }
           </View>
-        </ImageBackground>
-      </View>
+          </View>
+          </ImageBackground>
+
+          </SafeAreaView>
     );
   }
 }
@@ -86,38 +106,38 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   button:{
-    width:"48%",
-    backgroundColor: "#1692BE",
-    borderColor:"#0D6B8D",
+    width:"44%",
+    backgroundColor: "white",
+    borderColor:"white",
     borderWidth: 2,
     // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5
+    // marginHorizontal: 5,
     borderRadius: 15,
-    elevation: 8,
+    elevation: 50,
     // textAlign: "center",
-    opacity : 0.9,
+    //  opacity : 0.9,
     // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingHorizontal:5
+    paddingLeft:10
 
   },
   buttonText:{
-    fontSize: 18,
-    color: "white",
-    fontWeight: "bold",
+    fontSize: 15,
+    color: "black",
+     fontWeight: "bold",
     // alignSelf: "center",
     textTransform: "uppercase",
-    textAlign: "center",
     // marginHorizontal: 10,
+    overflow: "visible",
+    marginLeft : 10,
+    justifyContent:"center"
 
-
-    overflow: "visible"
   },
+
   part: {
     height: "50%",
     width: "100%",
@@ -125,10 +145,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
+    paddingHorizontal:10
+
   },
   tinyLogo: {
     width: 50,
     height: 50,
     borderRadius:25
-  },
+    },
+    textCard: {
+      marginBottom: 10,
+      color:"black",
+      textAlign:"center",
+      fontSize:18
+    }
 });

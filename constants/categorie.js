@@ -1,5 +1,3 @@
-import Img from './image'
-
 const categorie =[
     {
         name: "Poissons",

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, StyleSheet, Image, ImageBackground, View } from 'react-native'
 import { Avatar, Card } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';

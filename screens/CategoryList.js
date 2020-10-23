@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
         marginLeft : 14
     },
     image: {
-        // flex: 1,
         resizeMode: "cover",
         height: "100%",
         justifyContent: "center",

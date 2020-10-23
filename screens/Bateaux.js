@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground,Image} from 'react-native';
 import { Component } from 'react';
-import {Ionicons,Fontisto, Foundation, AntDesign} from "@expo/vector-icons";
-import { Button,Card,Header } from 'react-native-elements';
+import { Card,Header } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -110,15 +109,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor:"white",
     borderWidth: 2,
-    // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5,
     borderRadius: 15,
     elevation: 50,
-    // textAlign: "center",
-    //  opacity : 0.9,
-    // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -129,9 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "black",
      fontWeight: "bold",
-    // alignSelf: "center",
     textTransform: "uppercase",
-    // marginHorizontal: 10,
     overflow: "visible",
     marginLeft : 10,
     justifyContent:"center"

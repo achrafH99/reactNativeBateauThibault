@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Button, ToastAndroid } from 'react-native';
-import { Card, ListItem,Icon, Overlay,Input, Divider } from 'react-native-elements';
-import { Value } from 'react-native-reanimated';
+import { Card, ListItem,Icon, Overlay, Divider } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {incrementQuantity,decrementQuantity,deleteProduct,deleteAllProducts} from "../store/actions/cartActions";
 import images from "../services/images";
-import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons ,AntDesign, Entypo} from '@expo/vector-icons';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { Ionicons , Entypo} from '@expo/vector-icons';
 import { Header } from "react-native-elements"
-import CartComponent from '../components/CartComponent';
 import Toast from 'react-native-tiny-toast'
 
 

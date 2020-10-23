@@ -1,10 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import Home from './screens/Home.js';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator,CardStyleInterpolators  } from '@react-navigation/stack';
 import {NavigationContainer} from "@react-navigation/native";
-import Detail from './components/Detail.js';
 import { Provider } from 'react-redux';
 import store from "./store/configureStore";
 import ProductList from './screens/ProductList';

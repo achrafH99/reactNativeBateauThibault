@@ -1,6 +1,3 @@
-import { Value } from "react-native-reanimated";
-import { incrementQuantity } from "../actions/cartActions";
-
 let INITIAL_STATE = {
     products: []
 };

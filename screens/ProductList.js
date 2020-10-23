@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import {  View, StyleSheet, Alert,Icon, Text, ImageBackground, ToastAndroid } from 'react-native'
-import { Card } from "@paraboly/react-native-card";
-import { MaterialIcons,Ionicons,Fontisto, Foundation, AntDesign, Entypo } from '@expo/vector-icons';
+import {  View, StyleSheet, Text, ImageBackground, ToastAndroid } from 'react-native'
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import List from '../components/List';
-import categorie from '../constants/categorie'
-import products from '../constants/data'
 import { PricingCard } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {addProduct, removeProduct} from "../store/actions/cartActions";
@@ -13,13 +10,9 @@ import getRessources from "../services/apirest";
 import {Header} from "react-native-elements"
 import CartComponent from '../components/CartComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native-gesture-handler';
 import images from "../services/images";
 
-const val = 1; // numero categorie
-const productList = products.filter(value => {
-    return value.category===val
-})
+
 
 export class  ProductList extends Component {
 
@@ -106,10 +99,6 @@ export class  ProductList extends Component {
                         )
                     }
                 </ImageBackground>
-                {/* <ScrollView>
-
-                </ScrollView> */}
-
             </SafeAreaView>
 
         )
@@ -132,7 +121,6 @@ const styles = StyleSheet.create({
         marginLeft : 14
     },
     image: {
-        // flex: 1,
         resizeMode: "cover",
         height: "100%",
         justifyContent: "center"

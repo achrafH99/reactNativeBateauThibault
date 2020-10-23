@@ -1,30 +1,10 @@
-import { MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
-import { Button, Card, Icon } from 'react-native-elements'
 
 export default function Category({ name ,navigation, screen, icon, image, id }) {
     return (
-        // <TouchableOpacity style={styles.category}
-            // onPress={ () => {
-            //         navigation.navigate("ProductList", {
-            //             idCategorie: id
-            //         })
-            //     }
-            // }>
-        //     <View style={styles.item}>
-        //         <View style={styles.image}>
-        //             <Image source={image} style={styles.logo}/>
-        //         </View>
-        //         <View >
-        //             <Text style={{ color: "#fff" }}>{name}</Text>
-        //         </View>
-        //     </View>
-        // </TouchableOpacity>
 
     <TouchableOpacity
-
-                // icon={<MaterialIcons name="visibility" size={24} color="white" />}
                 style={styles.category}
                 title='Go' 
                 onPress={ () => {
@@ -52,7 +32,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 15,
     elevation: 8,
-// textAlign: "center",
  opacity : 0.9,
         padding: "2%",
         marginBottom: 20,

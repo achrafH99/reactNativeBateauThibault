@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View,StyleSheet,ScrollView,ImageBackground } from 'react-native';
-import images from '../services/images'
+import { StyleSheet,ScrollView } from 'react-native';
 
 export default class List extends Component {
     constructor(props){
@@ -24,7 +23,6 @@ const styles= StyleSheet.create({
         display: "flex",
         flexDirection : "column",
         justifyContent: "space-between"
-        // overflow: "scroll"
     },
     title: {
         display:"flex",

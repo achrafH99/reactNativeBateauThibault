@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
 import { Component } from 'react';
-import { Button,Header,Card } from 'react-native-elements';
+import { Header,Card } from 'react-native-elements';
 import {connect} from "react-redux";
 import images from "../services/images";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -68,7 +68,6 @@ export default Restaurants;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -82,15 +81,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor:"white",
     borderWidth: 2,
-    // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5,
     borderRadius: 15,
     elevation: 50,
-    // textAlign: "center",
-    //  opacity : 0.9,
-    // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -101,9 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "black",
      fontWeight: "bold",
-    // alignSelf: "center",
     textTransform: "uppercase",
-    // marginHorizontal: 10,
     overflow: "visible",
     marginLeft : 10,
     justifyContent:"center"

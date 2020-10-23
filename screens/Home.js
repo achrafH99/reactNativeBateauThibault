@@ -24,7 +24,6 @@ class HomePage extends Component{
           <View >
             <Card containerStyle={{borderRadius:10}}>
               <Card.Title style={{color:"black"}}>Le Bateau de Thibault</Card.Title>
-              {/* <Card.Divider/> */}
               <Text style={styles.textCard}>
               Vente en direct de notre bateau
               </Text>
@@ -62,7 +61,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'center',
 
@@ -92,15 +90,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor:"white",
     borderWidth: 2,
-    // paddingHorizontal: 12,
     paddingVertical: 30,
     marginVertical:10,
-    // marginHorizontal: 5,
     borderRadius: 15,
     elevation: 50,
-    // textAlign: "center",
-    //  opacity : 0.9,
-    // paddingVertical: 21,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -111,11 +104,8 @@ const styles = StyleSheet.create({
   buttonText:{
     fontSize: 15,
     color: "black",
-    // fontWeight: "bold",
-    // alignSelf: "center",
     textTransform: "uppercase",
     textAlign: "center",
-    // marginHorizontal: 10,
     overflow: "visible",
     marginLeft : 10
   },

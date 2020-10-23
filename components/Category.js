@@ -22,27 +22,39 @@ export default function Category({ name ,navigation, screen, icon, image, id }) 
         //     </View>
         // </TouchableOpacity>
 
-    <Card containerStyle={{borderRadius: 20}}>
-        <Card.Title>{name}</Card.Title>
-        <Card.Divider/>
-        {/* <Card.Image source={image} /> */}
-        <Button
-            // icon={<MaterialIcons name="visibility" size={24} color="white" />}
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, width : "50%", alignSelf : "center"}}
-            title='Go' 
-            onPress={ () => {
-                navigation.navigate("ProductList", {
-                    idCategorie: id
-                })
-            }
-        }/>
-    </Card>
+    <TouchableOpacity>
+            {/* <Card.Image source={image} /> */}
+            <Button
+                // icon={<MaterialIcons name="visibility" size={24} color="white" />}
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, width : "50%", alignSelf : "center"}}
+                title='Go' 
+                onPress={ () => {
+                        navigation.navigate("ProductList", {
+                            idCategorie: id
+                        })
+                    }
+                }/>
+            <View style={styles.item}>
+                <View style={styles.image}>
+                    <Image source={image} style={styles.logo}/>
+                </View>
+                <View >
+                    <Text style={{ color: "#194d82",fontSize:22,fontWeight:"bold" }}>{name}</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     category:{
-        backgroundColor: "rgba(0,0,0,.25)",
+        backgroundColor: "white",
+    borderColor:"#023d52",
+    borderWidth: 2,
+    borderRadius: 15,
+elevation: 8,
+// textAlign: "center",
+ opacity : 0.9,
         padding: "2%",
         marginBottom: 20,
         borderWidth: .4,
@@ -58,6 +70,6 @@ const styles = StyleSheet.create({
     logo:{
         width: 100,
         height:100,
-        
+
     }
 })

@@ -8,9 +8,11 @@ import { bindActionCreators } from 'redux';
 import {incrementQuantity,decrementQuantity,deleteProduct,deleteAllProducts} from "../store/actions/cartActions";
 import images from "../services/images";
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons ,AntDesign} from '@expo/vector-icons';
 import { Header } from "react-native-elements"
 import CartComponent from '../components/CartComponent';
+import Toast from 'react-native-tiny-toast'
+
 
 class Cart extends Component {
   constructor(props) {
@@ -63,7 +65,8 @@ class Cart extends Component {
   }
 
   payer(){
-    ToastAndroid.show("Le paiement a été effectué", ToastAndroid.SHORT);
+    Toast.showSuccess('Paiement accepté ✅')
+
     this.toggleOverlay();
     this.deleteAllProducts();
     this.goToHome();
@@ -75,7 +78,7 @@ class Cart extends Component {
       this.state.firstName.length ==0 ||
       this.state.address.length ==0||
       this.state.city.length == 0);
-      
+
   }
 
   toggleOverlay(){
@@ -105,15 +108,15 @@ class Cart extends Component {
             <ImageBackground source={images["background"]} style={styles.image}>
 
                 <SafeAreaView style={{flex: 1,paddingBottom:10}} >
-                  
+
                   <Header
                     containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25, marginBottom: 30}}
                     centerComponent={{ text: 'My Cart', style: { color: '#fff', fontSize:32 }}}
                 />
               <ScrollView>
                 <View style={{paddingHorizontal : 10}}>
-                   {   
-                        
+                   {
+
                         this.props.cartProducts.map((value,i) => {
                             return (
                                 <ListItem key={i} bottomDivider  >
@@ -126,7 +129,7 @@ class Cart extends Component {
                                 <Ionicons name="md-add-circle" size={32} color="#008cdc" onPress={() => this.add(value.product.id)}/>
                                 <Ionicons name="md-trash" size={32} color="red" onPress={() => this.deleteProduct(value.product.id)}/>
 
-                                
+
                               </ListItem>
                             );
                         })
@@ -157,9 +160,9 @@ class Cart extends Component {
                 </Card>
                   </ScrollView>
                   <Overlay fullScreen={false} overlayStyle={{height: "50%", width: "90%", display: "flex", justifyContent:"space-around"}}  isVisible={this.state.visible} onBackdropPress={() => this.toggleOverlay}>
-                      
+
                     {
-                      
+
                       this.state.validate == false && (
                         <View>
                           <TextInput style={styles.input} placeholder="Last Name" value={this.state.valueLastName} onChangeText={(value) => this.handleChange({lastName : value })}></TextInput>
@@ -208,19 +211,19 @@ class Cart extends Component {
                           </ListItem.Content>
                         </ListItem>
                           <Divider></Divider>
-                        
+
                         <Button
                         icon={<Icon name='code' color='#ffffff' />}
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
                         titleStyle={{fontSize:28}}
-                        title='Cancel' onPress={() => this.cancel()} />  
+                        title='Cancel' onPress={() => this.cancel()} />
                         <Text></Text>
                         <Button
                         icon={<Icon name='code' color='#ffffff' />}
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                         titleStyle={{fontSize:28}}
                         title='Payer' onPress={() => this.payer()} />
-                          
+
 
                       </View>)
                     }
@@ -233,12 +236,12 @@ class Cart extends Component {
 
 const styles = StyleSheet.create({
     container : {
-        
+
     },
     image : {
         flex: 1,
         resizeMode: "cover",
-        
+
     },
     quantity: {fontSize:28},
     buttonQuantity : {
@@ -263,5 +266,3 @@ const dispatch = (dispatch) => {
 }
 
 export default connect(mapStateToProps, dispatch)(Cart);
-
-

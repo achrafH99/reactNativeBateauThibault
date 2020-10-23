@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import Home from './screens/Home.js';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator,CardStyleInterpolators  } from '@react-navigation/stack';
 import {NavigationContainer} from "@react-navigation/native";
 import Detail from './components/Detail.js';
 import { Provider } from 'react-redux';
@@ -16,6 +16,7 @@ import Recettes from './screens/Recettes.js'
 import Restaurants from './screens/Restaurants.js'
 import Details from './screens/Details.js';
 import Contact from './screens/Contact.js';
+
 
 const Stack = createStackNavigator();
 
@@ -37,13 +38,12 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator  initialRouteName="Home" style={styles.container} screenOptions={{headerShown : false }}>
-            <Stack.Screen name="Home" component={Home} options={{ title: 'My home',headerStyle: {
-            backgroundColor: 'black',opacity:1, alignItems:'center'},
-            headerTitleStyle: { alignSelf: 'center' },
-            headerTintColor: 'white'}}/>
+            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Detail" component={Details} />
-            <Stack.Screen name="ProductList" component={ProductList}/>
-            <Stack.Screen name="CategoryList" component={CategoryList}/>
+            <Stack.Screen name="ProductList" component={ProductList} options={{
+              cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS    }}  />
+            <Stack.Screen name="CategoryList" component={CategoryList} options={{
+              cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS    }}/>
             <Stack.Screen name="Bateaux" component={Bateaux}/>
             <Stack.Screen name="Cart" component={Cart}/>
             <Stack.Screen name="Recettes" component={Recettes}/>

@@ -15,7 +15,7 @@ export default function Category({ name ,navigation, screen, icon, image, id }) 
                     <Image source={image} style={styles.logo}/>
                 </View>
                 <View >
-                    <Text style={{ color: "#fff" }}>{name}</Text>
+                    <Text style={{ color: "#194d82",fontSize:22,fontWeight:"bold" }}>{name}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -24,7 +24,13 @@ export default function Category({ name ,navigation, screen, icon, image, id }) 
 
 const styles = StyleSheet.create({
     category:{
-        backgroundColor: "rgba(0,0,0,.25)",
+        backgroundColor: "white",
+    borderColor:"#023d52",
+    borderWidth: 2,
+    borderRadius: 15,
+elevation: 8,
+// textAlign: "center",
+ opacity : 0.9,
         padding: "2%",
         marginBottom: 20,
         borderWidth: .4,
@@ -40,6 +46,6 @@ const styles = StyleSheet.create({
     logo:{
         width: 100,
         height:100,
-        
+
     }
 })

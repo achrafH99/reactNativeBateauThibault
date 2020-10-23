@@ -41,9 +41,9 @@ export default function App() {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Detail" component={Details} />
             <Stack.Screen name="ProductList" component={ProductList} options={{
-              cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS    }}  />
+              cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS    }}  />
             <Stack.Screen name="CategoryList" component={CategoryList} options={{
-              cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS    }}/>
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS     }}/>
             <Stack.Screen name="Bateaux" component={Bateaux}/>
             <Stack.Screen name="Cart" component={Cart}/>
             <Stack.Screen name="Recettes" component={Recettes}/>

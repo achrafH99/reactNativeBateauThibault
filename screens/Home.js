@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View ,TouchableOpacity, ImageBackground,Image} from 'react-native';
 import { Component } from 'react';
 import { Button ,Header,Card,Icon} from 'react-native-elements';
 import {connect} from "react-redux";
@@ -17,8 +17,8 @@ class HomePage extends Component{
     return (
       <SafeAreaView style={styles.container}>
                 <Header
-                  containerStyle = {{backgroundColor: "#008cdc",height : 70,paddingBottom:25}}
-                    centerComponent={<Text style={{fontSize: 32, color : 'white'}}>Home</Text>}
+                  containerStyle = {{backgroundColor: "black",height : 70,paddingBottom:25,paddingTop:50}}
+                    centerComponent={<Image style={{width:300,height:80}}source={require('../assets/images/header.png')}/>}
           />
         <ImageBackground source={images["background"]} style={styles.image}>
           <View >
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     //backgroundColor: '#06ABA6',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   head: {
     flex: 1,
@@ -128,11 +128,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginTop:"25%",
     marginLeft :10
-    
+
   },
   textCard: {
     marginBottom: 10,
     color:"black",
-    textAlign:"center"
+    textAlign:"center",
+    fontSize:18
   }
 });

@@ -114,7 +114,7 @@ class Cart extends Component {
                 <SafeAreaView style={{flex: 1,paddingBottom:10}} >
 
                   <Header
-                    containerStyle = {{backgroundColor: "#008cdc",height : 70, paddingBottom:25, marginBottom: 30}}
+                    containerStyle = {{backgroundColor: "black",height : 70, paddingBottom:25, marginBottom: 30}}
                     centerComponent={{ text: 'My Cart', style: { color: '#fff', fontSize:32 }}}
                     leftComponent={<Entypo name="home" size={32} color="white" onPress={() => this.goToHome()} />}
                 />

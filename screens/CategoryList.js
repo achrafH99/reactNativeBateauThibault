@@ -11,7 +11,7 @@ export default function CategoryList({ navigation }) {
     return (
         <SafeAreaView>
                 <Header
-                    containerStyle = {{backgroundColor: "#008cdc",height : 100, paddingBottom:0, marginBottom: 0}}
+                    containerStyle = {{backgroundColor: "black",height : 100, paddingBottom:0, marginBottom: 0}}
                     centerComponent={{ text: 'Categories', style: { color: '#fff', fontSize:32 }}}
                 />
                 <ImageBackground source={images["background"]} style={styles.image}>

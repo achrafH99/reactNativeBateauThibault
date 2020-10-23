@@ -24,7 +24,7 @@ class HomePage extends Component{
           <View >
             <Card containerStyle={{borderRadius:10}}>
               <Card.Title style={{color:"black"}}>Le Bateau de Thibault</Card.Title>
-              <Card.Divider/>
+              {/* <Card.Divider/> */}
               <Text style={styles.textCard}>
               Vente en direct de notre bateau
               </Text>

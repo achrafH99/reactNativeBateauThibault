@@ -65,7 +65,7 @@ class Cart extends Component {
   }
 
   payer(){
-    Toast.showSuccess('Paiement accepté ✅')
+    Toast.showSuccess('Paiement accepté')
 
     this.toggleOverlay();
     this.deleteAllProducts();

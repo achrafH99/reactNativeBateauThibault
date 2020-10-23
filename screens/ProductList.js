@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  View, StyleSheet, Alert,Icon, Text, ImageBackground } from 'react-native'
+import {  View, StyleSheet, Alert,Icon, Text, ImageBackground, ToastAndroid } from 'react-native'
 import { Card } from "@paraboly/react-native-card";
 import { MaterialIcons,Ionicons,Fontisto, Foundation, AntDesign, Entypo } from '@expo/vector-icons';
 import List from '../components/List';
@@ -42,7 +42,7 @@ export class  ProductList extends Component {
             })
         })
         .catch(err => {
-            console.log(err);
+            ToastAndroid.show("Votre requête est actuellement indisponible, veuillez réessayer ultérieurement", ToastAndroid.SHORT);
         })
     }
 
